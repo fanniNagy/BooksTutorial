@@ -2,10 +2,7 @@ package com.codecool.BooksTutorial.controller
 
 import com.codecool.BooksTutorial.model.Book
 import com.codecool.BooksTutorial.repository.BookRepository
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class BookController(val repository: BookRepository){
@@ -17,5 +14,8 @@ class BookController(val repository: BookRepository){
 
     @GetMapping("/book")
     fun getAllBooks() = repository.findAll().toList();
+
+    @GetMapping("/book/{title}")
+    fun getBookByTitle(@PathVariable("title")title: String) = repository.findByTitle(title)
 
 }
