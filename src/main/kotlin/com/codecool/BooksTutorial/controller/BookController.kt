@@ -16,7 +16,6 @@ class BookController(val repository: BookRepository){
     }
 
     @GetMapping("/book")
-    fun getAllBooks(): List<Book>{
-        return repository.findAll().toList();
-    }
+    fun getAllBooks() = repository.findAll().toList();
+
 }
